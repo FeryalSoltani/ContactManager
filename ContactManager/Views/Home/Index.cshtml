@@ -1,0 +1,77 @@
+﻿@model IEnumerable<ContactManager.Models.ContactInfo>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2 class="headText">Contacts List</h2>
+<div class="form-horizontal editContentBox">
+    @foreach (var item in Model)
+    {
+        <div class="contactContainer">
+            <div class="cardbox" id="cardBox" value="@item.FirstName">
+                <table class="table contactTable">
+                    <tr>
+                        <td>
+                            @Html.DisplayNameFor(model => model.FirstName)
+                        </td>
+
+                        <td class="val">
+                            @Html.DisplayFor(modelItem => item.FirstName)
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            @Html.DisplayNameFor(model => model.LastName)
+                        </td>
+
+                        <td class="val">
+                            @Html.DisplayFor(modelItem => item.LastName)
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            @Html.DisplayNameFor(model => model.Number)
+                        </td>
+
+                        <td class="val">
+                            @Html.DisplayFor(modelItem => item.Number)
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            @Html.DisplayNameFor(model => model.Type)
+                        </td>
+
+                        <td class="val">
+                            @Html.DisplayFor(modelItem => item.Type)
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            @Html.DisplayNameFor(model => model.Email)
+                        </td>
+
+                        <td class="val" style="font-size:8px">
+                            @Html.DisplayFor(modelItem => item.Email)
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="editLink">
+                            @Html.ActionLink("Edit", "Edit", new { id = item.Id })
+                        </td>
+                        <td class="deleteLink">
+                            @Html.ActionLink("Delete", "Delete", new { id = item.Id })
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    }
+    <div class="contactContainer">
+        <div class="btnBox" style="margin:0px 10px;">
+            <input type="button" class="createBtn btnBox" value="Create New" onclick="location.href='@Url.Action("Create", "Home")'" />
+        </div>
+    </div>
+</div>
+
